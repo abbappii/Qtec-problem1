@@ -1,0 +1,95 @@
+
+<style>
+body {
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: -20px 0 50px;
+}
+h1 {
+    font-weight: bold;
+    margin: 1rem;
+    align-items: center;
+}
+.form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.reg-form{
+    background-color: FFFFFF;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 110%;
+    text-align: left;
+}
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 0px 10PX;
+    width: 100%;
+}
+
+ </style>
+
+{% if page %}
+            
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form method="POST" action="" class="form">
+            {% csrf_token %}
+            <h1>Login</h1>
+            <label for="">username:</label>
+            <input type="text" name="username" placeholder="username" />
+
+            <label for="">password:</label>
+            <input type="password" name="password" placeholder="password" /><br>
+
+            <button type="submit" value="Login">Submit</button>
+
+            <p>haven't signed up yet?</p>
+            <a href="{% url 'register' %}">Sign Up</a>
+
+        </form>
+            
+    </div>
+</div>       
+                <!-- <label for="">username:</label>
+                <input type="text" name="username" placeholder="username" />
+
+                <label for="">password:</label>
+                <input type="password" name="password" placeholder="password" />
+
+                <input type="submit" value="Login" /> -->
+   
+
+{% else %}
+        
+    <form method="POST" action=""class="reg-form">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <input type="submit" value="Register" />
+
+        <p>Already signed up yet?   
+        <a href="{% url 'login' %}">Login</a></p>
+        
+    </form>
+
+{% endif %}
+
+

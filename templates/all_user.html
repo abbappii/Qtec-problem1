@@ -1,0 +1,19 @@
+
+<style>
+    .search-container{
+        background: #f6f5f7;
+        font-family: 'Montserrat', sans-serif;
+        height: 100%;
+        padding: 20px;
+    }
+</style>
+
+<div class="search-container">
+
+        <h1>Search Keyword:</h3>
+
+        {% for value in user_search %}
+            <p>{{ value.keyword.name }}</p>
+        {% endfor %}
+
+</div>

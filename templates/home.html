@@ -1,0 +1,90 @@
+
+{% extends 'navbar.html' %}
+
+{% block content %} 
+
+<style>
+    body {
+        background: #f6f5f7;
+        font-family: 'Montserrat', sans-serif;
+        height: 100vh;
+        width: 100%;
+    }
+    .room-keyword{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .search {
+        text-align: center;
+        clear: both;
+        margin: 3% 0 0 0;
+    }
+    .search input {
+    
+        width: 570px;
+        border: 1px solid #D8D8D8;
+        padding: 5px;
+        font-size: 11pt;
+    }
+    .search-bar {
+        max-width: 80%;
+    }
+    
+    .search input:focus {
+        outline: none;
+        border: 1px solid #4285F4;
+    }
+    .userclass{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin: 5px;
+    }
+</style>
+
+<div class="search">
+    <form action="usearch" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="username" value="{{ request.user }}" placeholder="Search Rooms...">
+        <input class="search-bar" type="text" name="search" placeholder="Search Rooms..." autofocus x-webkit-speech />
+        
+        <button class="btn btn-primary" type="submit"  value="submit">submit</button>
+    </form>
+</div>
+
+
+
+<div class="room-keyword">
+
+    <!-- keyword section  -->
+    <div>
+        <h3>All keyword:</h3>
+        {% for keyword in keywords %}
+             <p>{{ keyword.name }}  ({{ keyword.total_search }} times found)</p>
+             <!-- <p>Total User: {{ keyword.search_keyword_users.count }}</p> -->
+        {% endfor %}
+    </div>
+
+    <!-- All user serction  -->
+    <div>
+
+        <h3>All User</h3>
+        {% for user in users %}
+            <p><a href="{% url 'everyusersearch' user.id %}">{{ user.username }} </a></p>
+        {% endfor %}
+              
+
+    </div>
+
+    <!-- Time range  -->
+    <div>
+        <h3> Time Range:</h3>
+        <p>Total data: {{ result.total }} </p>
+        <p> data from yesterday: {{ result.yesterday }} </p>
+        <p>data form last 7 days: {{ result.last_7_day }} </p>
+        <p>data form last 30 days: {{ result.last_7_day }} </p>
+    </div>
+
+</div>
+
+{% endblock %}
