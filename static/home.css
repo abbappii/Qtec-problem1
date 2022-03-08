@@ -1,0 +1,36 @@
+body {
+    background: #f6f5f7;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    width: 100%;
+}
+.room-keyword{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.search {
+    text-align: center;
+    clear: both;
+    margin: 3% 0 0 0;
+}
+.search input {
+
+    width: 570px;
+    border: 1px solid #D8D8D8;
+    padding: 5px;
+    font-size: 11pt;
+}
+.search-bar {
+    max-width: 80%;
+}
+
+.search input:focus {
+    outline: none;
+    border: 1px solid #4285F4;
+}
+.userclass{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 5px;
+}
