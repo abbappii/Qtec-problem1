@@ -165,3 +165,11 @@ def timerange(request):
     return render(request, 'home.html',context)
 
  
+def tuto(request,pk):
+    user = User.objects.get(id=pk)
+    tasks=  user.search_keywords.all()
+    
+    if request.is_ajax():
+        task_serializers = serializers.serialize('json', tasks)
+        return JsonResponse(task_serializers, safe=False)
+    return JsonResponse({'message':'Wrong validation'})
