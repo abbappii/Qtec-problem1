@@ -35,7 +35,7 @@
         <h3>All User</h3>
         {% for user in users %}
             <p><a class="content" href="{% url 'everyusersearch' user.id %}">{{ user.username }} </a></p>
-            <!-- <button class="content" data-url="{% url 'everyusersearch' user.id %}">{{ user.username }} </button> -->
+            <!-- <button class="content" data-url="{% url 'tuto' user.id %}">{{ user.username }} </button> -->
 
         {% endfor %}
               

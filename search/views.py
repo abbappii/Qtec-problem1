@@ -146,25 +146,7 @@ def everyusersearch(request,pk):
     return render(request, 'all_user.html', context)
 
 
-def timerange(request):
-    now = timezone.now()
-
-    # implement from documentation 
-    # today = Keywordsearch.objects.filter(created__lte=now.today())
-    # last_seven_days = Keywordsearch.objects.filter(created__gt=F('created') + timedelta(days=7))
-    
-    result = Keywordsearch.objects.aggregate(
-        total=models.Count('keyword'),
-        yesterday = models.Count('keyword',filter=models.Q(created__date__gte=(now - timedelta(hours=24)).date())),
-        last_seven_days = models.Count('keyword',filter=models.Q(created__date__gte=(now - timedelta(days=7)).date())),
-        last_30_days = models.Count('keyword',filter=models.Q(created__date__gte=(now - timedelta(days=30)).date())),
-    )
-    context = {
-        'result':result
-    }
-    return render(request, 'home.html',context)
-
- 
+# try for js/ajax
 def tuto(request,pk):
     user = User.objects.get(id=pk)
     tasks=  user.search_keywords.all()
