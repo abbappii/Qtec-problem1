@@ -36,9 +36,7 @@
         {% for user in users %}
             <p><a class="content" href="{% url 'everyusersearch' user.id %}">{{ user.username }} </a></p>
             <!-- <button class="content" data-url="{% url 'tuto' user.id %}">{{ user.username }} </button> -->
-
         {% endfor %}
-              
 
     </div>
 
@@ -54,22 +52,33 @@
 </div>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
 
-    <script>
-        $('.content').on('click',function(){
-            $.ajax({
-                url: $('content').data('url'),
-                type: 'GET',
-                dataType: 'json',
-                success: function(resp){
-                    $(".content").html(resp);
-                },
-                error: function(resp){
-                    console.log('something went wrong')
-                }
-            });
-        });
+    <!-- SERCH JS  -->
+    <!-- <script>
+        function save_data(){
+            console.log('clicked save')
+            username = document.getElementById('username').value
+            keyword = document.getElementById('keyword').value
+            csrf_token = document.getElementById('csrf_token').value
+            
+            var data = new FormData();
+            data.append('username', username);
+            data.append('search', keyword);
+            data.append('csrfmiddlewaretoken', csrf_token);
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/usearch_js', true);
+            xhr.onload = function () {                
+                console.log(this.responseText);
+                span = document.getElementById(keyword+'-num');
+                console.log(span)
+                num = parseInt(document.getElementById(keyword+'-num').innerHTML) + 1;
+                console.log(num)
+                span.innerHTML = num;            
+            };
+            xhr.send(data);
+        }     
     </script> -->
 
 
