@@ -24,7 +24,7 @@
     <div>
         <h3>All keyword:</h3>
         {% for keyword in keywords %}
-             <p>{{ keyword.name }}  ({{ keyword.total_search }} times found)</p>
+             <p>{{ keyword.name }}  &lpar;{{ keyword.total_search }} times found &rpar;</p>
              <!-- <p>Total User: {{ keyword.search_keyword_users.count }}</p> -->
         {% endfor %}
     </div>
